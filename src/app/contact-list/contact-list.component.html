@@ -1,0 +1,30 @@
+<div style="overflow-y: hidden;">
+<input type="text" class="form-control" placeholder="Search for Contact" [(ngModel)]="searchTerm">
+<div class='row' style="margin-inline: 1px;">
+
+        <div class='table-responsive'>
+            <table class="table ">
+                <tr class="bg-info">          
+                    <th>Name</th>
+                    <th>address</th>
+                    <th>Mobile No</th>
+                    <th>Email</th>
+                    <th> </th>
+                    <th> </th>
+
+                </tr>
+                <tr *ngFor='let cn of searchedCnt'>
+                    <td>{{cn.name}}</td>
+                    <td>{{cn.address}}</td>
+                    <td>{{cn.mob}}</td>
+                    <td>{{cn.email}}</td>
+                    <td><a class="nav-link" [routerLink]="['/contact-list']"> Delete</a></td>
+                </tr>
+
+
+            </table>
+        </div>
+
+
+
+</div>

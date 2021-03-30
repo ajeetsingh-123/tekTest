@@ -1,0 +1,43 @@
+<!-- <div ng-controller="TestController as testCtrl"></div>
+<form  #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+   <div class="input-group">
+    <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1" [(ngModel)]="regForm.name" [ngModelOptions]="{standalone: true}" >
+  </div>
+  
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Address" aria-describedby="basic-addon2"  [(ngModel)]="regForm.address" [ngModelOptions]="{standalone: true}"> 
+  </div>
+  
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Mobile Number" aria-describedby="basic-addon2"  [(ngModel)]="regForm.mob" [ngModelOptions]="{standalone: true}" >
+  </div> 
+
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon2" [(ngModel)]="regForm.email" [ngModelOptions]="{standalone: true}">
+      </div> 
+      
+      <button class="button" type="submit" value='submit'>save</button>
+
+    </form>
+</div> -->
+
+
+<div>
+  <form  [formGroup]="ContactForm" (ngSubmit)="onSubmit()">
+  
+      <input type="text"  placeholder="Name" formControlName="name" ><br>
+  
+    
+      <input type="text"  placeholder="Address" formControlName="address" ><br>
+    
+    
+    
+      <input type="text"  placeholder="Mobil Number" formControlName="mob" ><br>
+  
+  
+     
+       <input type="text"  placeholder="Email" formControlName="email" ><br>
+       <button type="submit" value="submit">submit</button>
+    </form>
+  
+  </div>
