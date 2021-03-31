@@ -1,0 +1,5 @@
+legend {
+    width: 70px;
+    padding: 2px;
+    margin-left: calc(50% - 5px - 5px);
+}
