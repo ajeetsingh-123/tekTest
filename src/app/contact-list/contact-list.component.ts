@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../contact-create/contact';
 import { HomeServiceService} from '../home-service.service';
 import { IContact} from '../home/home';
 import { Router, ActivatedRoute } from "@angular/router";
@@ -28,19 +27,16 @@ export class ContactListComponent implements OnInit {
   ngOnInit(): void {
    
       this.contact=this.homeService.getUser().subscribe((response)=>{
-          this.contact=response  
+          this.contact=this.homeService.getUser().subscribe((response)=>{
+            this.updateUsersList(response)
+          })
+      });
+    
+  }
+  updateUsersList(response:Object){
+         this.contact=response  
           this.arr=this.contact
           this.searchedCnt=this.contact;
-              
-      });
-      // this.contact=this.contact.slice(0,this.contact.length-1);
-      // console.log(this.contact)
-
-      // this.contact = Object.keys(this.contact).map(index => {
-      //   this.contact = this.contact[index];
-      //   return this.contact;
-    // });
-
   }
   get searchTerm(): string {
         return this._searchTerm;
@@ -65,8 +61,9 @@ export class ContactListComponent implements OnInit {
 
   deleteUser(user:any){
     this.homeService.deleteUser(user).subscribe(()=>{
-      this.homeService.getUser();
-      this.route.navigate(['/contact-list'])
+      this.homeService.getUser().subscribe((response)=>{
+        this.updateUsersList(response);
+      });
     })
   }
 }

@@ -22,11 +22,10 @@ export class ContactCreateComponent implements OnInit {
   constructor(public homeService:HomeServiceService,private route: Router, private aroute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.contact=this.homeService.getContact();
   }
 
   onSubmit(): void {
-    
+
     this.addUser(this.ContactForm.value);
     this.route.navigate(['/contact-list'])
   }

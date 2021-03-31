@@ -5,28 +5,21 @@
       "address": "MH-F hostel ,north campus ,university of hyderabad",
       "mob": "",
       "email": "mrajeetsinghpal@gmail.com",
-      "id": 7
-    },
-    {
-      "name": "AJEET",
-      "address": "MH-F hostel ,north campus ,university of hyderabad",
-      "mob": "",
-      "email": "",
-      "id": 8
-    },
-    {
-      "name": "ro",
-      "address": "MH-F hostel ,north campus ,university of hyderabad",
-      "mob": "",
-      "email": "mrajeetsinghpal@gmail.com",
-      "id": 9
+      "id": 12
     },
     {
       "name": "AJEET SINGH",
       "address": "MH-F hostel ,north campus ,university of hyderabad",
       "mob": "",
       "email": "mrajeetsinghpal@gmail.com",
-      "id": 10
+      "id": 13
+    },
+    {
+      "name": "AJEET SINGH",
+      "address": "MH-F hostel ,north campus ,university of hyderabad",
+      "mob": "",
+      "email": "mrajeetsinghpal@gmail.com",
+      "id": 14
     }
   ]
 }
