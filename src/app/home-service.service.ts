@@ -17,7 +17,7 @@ export class HomeServiceService {
  
    }
    ngOnInit(){
-     this.allUser=this.getUser();
+    // this.allUser=this.getUser();
    }
 
   public getUser() 
