@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -8,37 +9,40 @@ import { IContact } from './home/home';
   providedIn: 'root'
 })
 export class HomeServiceService {      
-public contacts: IContact[]=[
-   {name:"Ajeet", address: "ajeet details", mob: 1234567, email:"ajeet@xyz.com" },
-   {name:"rohit", address: "rohit details", mob:1234567, email:"rohit@xyz.com" },
-   {name:"rahul", address: "rahul details", mob:1234567,email:"rahul@xyz.com" },
-   {name:"krishna", address: "krish details",mob:234567, email:"krish@xyz.com" },
-   {name:"abc", address: "abc details",mob:1234567, email:"abc@xyz.com" }
- ]
+
+  allUser: any;
  
   
-  constructor() { }
-  
-  public getContact() :Array<{name:string, address:string, mob:number,email:string}>
+  constructor(private _http :HttpClient) {
+ 
+   }
+   ngOnInit(){
+     this.allUser=this.getUser();
+   }
+
+  public getUser() 
   {
-    return this.contacts;
+  return this._http.get("http://localhost:3000/details")
   }
 
-  public addContact(contacts:any) 
+  public createUser(user:any) 
   {
-    this.contacts.push(contacts);
+    return this._http.post("http://localhost:3000/details",user )
+  }
+  public updateUser()
+  {
+
+  }
+  public deleteUser(uid:any) 
+  {
+    return this._http.delete("http://localhost:3000/details/" + uid.id)
   }
 
-  public deleteContact(contacts:any) 
-  {
-    this.contacts.pop();
+  public getLatestUser(){
+    this.getUser().subscribe((response)=>{
+      this.allUser=response
+      //console.log(this.allUser[0])
+       return this.allUser
+    })
   }
-
-
-  // public getCnt(searchText:any){
-  //   const cnt = this.getContact().find(cnt => cnt.name=== searchText );
-  //       return cnt;
-  //   }
-
-
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../contact-create/contact';
 import { HomeServiceService} from '../home-service.service';
 import { IContact} from '../home/home';
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-contact-list',
@@ -8,16 +10,37 @@ import { IContact} from '../home/home';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-   contact: any;
+   contact:any
+   arr:IContact[]=[];
    _searchTerm: any;
   cnts: IContact[] = [];
   searchedCnt: IContact[]=[];
   cnt :any;
-  constructor(public homeService:HomeServiceService) { }
+  userObj={
+    name:'',
+    address:'',
+    mobile:'',
+    email:''
+
+  }
+  constructor(public homeService:HomeServiceService,private route: Router, private aroute: ActivatedRoute) { }
 
   ngOnInit(): void {
-     this.contact=this.homeService.getContact();
-     this.searchedCnt=this.contact;
+   
+      this.contact=this.homeService.getUser().subscribe((response)=>{
+          this.contact=response  
+          this.arr=this.contact
+          this.searchedCnt=this.contact;
+              
+      });
+      // this.contact=this.contact.slice(0,this.contact.length-1);
+      // console.log(this.contact)
+
+      // this.contact = Object.keys(this.contact).map(index => {
+      //   this.contact = this.contact[index];
+      //   return this.contact;
+    // });
+
   }
   get searchTerm(): string {
         return this._searchTerm;
@@ -34,30 +57,16 @@ export class ContactListComponent implements OnInit {
   }
 
   getCnt(name:string): IContact {
-    const cnt = this.contact.find(
-         this.contact === name
-    )
-    return cnt;
+  const cnt = this.contact.find(
+       this.contact === name
+  )
+  return cnt;
 }
 
-  deleteMovie(name:string) {
-
-    const index = this.contact.findIndex(
-         this.contact.name === name
-    )
-
-    if (index >= 0) {
-        this.contact.splice(index, 1);
-    }
-
-}
-
-
-        updateCnt(name:string,cnInfo:IContact ) {
-          const cnt = this.getCnt(name);
-          if (cnt) {
-             cnt.mob =cnInfo.mob ;
-          }
-        }
-
+  deleteUser(user:any){
+    this.homeService.deleteUser(user).subscribe(()=>{
+      this.homeService.getUser();
+      this.route.navigate(['/contact-list'])
+    })
+  }
 }

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactCreateComponent } from './contact-create/contact-create.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
     //FormGroup
   ],
   providers: [],

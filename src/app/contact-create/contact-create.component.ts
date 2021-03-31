@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeServiceService} from '../home-service.service';
 import { User} from './contact';
+import { HttpClientModule } from '@angular/common/http';
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormsModule,FormControl,FormGroup, NgForm,ReactiveFormsModule } from '@angular/forms';
 
@@ -21,17 +22,19 @@ export class ContactCreateComponent implements OnInit {
   constructor(public homeService:HomeServiceService,private route: Router, private aroute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.contact=this.homeService.getContact();
+    //this.contact=this.homeService.getContact();
   }
 
   onSubmit(): void {
-
-    //console.log(this.contact);
-    //console.log(this.ContactForm.value);
-    this.homeService.addContact(this.ContactForm.value);
-    this.route.navigate(['/contact-list']);
-
-
+    
+    this.addUser(this.ContactForm.value);
+    this.route.navigate(['/contact-list'])
   }
-  
+ 
+  addUser(obj:any)
+  {
+    this.homeService.createUser(obj).subscribe((response)=>{
+      console.log(this.homeService.getLatestUser());
+    })
+  }
 }

@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { HomeServiceService } from '../home-service.service';
+
 import { IContact} from './home';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,8 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(private homeService:HomeServiceService) { }
 
   ngOnInit(): void {
-    this.details=this.homeService.getContact();
-   console.log(this.details)
+  //   this.details=this.homeService.getContact();
+  //  console.log(this.details)
   }
   
 }

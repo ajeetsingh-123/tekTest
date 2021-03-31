@@ -14,17 +14,12 @@
 
                 </tr>
                 <tr *ngFor='let cn of searchedCnt'>
-                    <td>{{cn.name}}</td>
-                    <td>{{cn.address}}</td>
-                    <td>{{cn.mob}}</td>
-                    <td>{{cn.email}}</td>
-                    <td><a class="nav-link" [routerLink]="['/contact-list']"> Delete</a></td>
+                    <td>{{cn?.name}}</td>
+                    <td>{{cn?.address}}</td>
+                    <td>{{cn?.mob}}</td>
+                    <td>{{cn?.email}}</td>
+                    <td><a (click)="deleteUser(cn)" > Delete</a></td>
                 </tr>
-
-
             </table>
         </div>
-
-
-
 </div>
